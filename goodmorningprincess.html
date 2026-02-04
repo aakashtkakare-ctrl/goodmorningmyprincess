@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good Morning My Love 💖</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(rgba(255, 182, 193, 0.1), rgba(173, 216, 230, 0.1)),
+                        url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2070&auto=format&fit=crop') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            color: #5d3a3a;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Romantic floating hearts */
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: rgba(255, 105, 180, 0.7);
+            animation: floatHearts 6s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes floatHearts {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Main container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            backdrop-filter: blur(2px);
+        }
+
+        /* Main heading */
+        .main-heading {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(3rem, 8vw, 6rem);
+            text-align: center;
+            margin: 40px 0 60px;
+            color: #ff6b93;
+            text-shadow: 0 0 30px rgba(255, 107, 147, 0.4),
+                         0 0 60px rgba(255, 107, 147, 0.2);
+            animation: fadeInFloat 2s ease-out;
+            position: relative;
+        }
+
+        @keyframes fadeInFloat {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .main-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #ff6b93, transparent);
+        }
+
+        /* Buttons section */
+        .buttons-section {
+            display: flex;
+            gap: 40px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .romantic-btn {
+            padding: 20px 40px;
+            font-size: 1.5rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .coffee-btn {
+            background: linear-gradient(135deg, #8b4513, #d2691e);
+            color: white;
+        }
+
+        .juice-btn {
+            background: linear-gradient(135deg, #556b2f, #6b8e23);
+            color: white;
+        }
+
+        .romantic-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+
+        .romantic-btn:hover::before {
+            left: 100%;
+        }
+
+        .romantic-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .message-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            text-align: center;
+            animation: popIn 0.3s ease-out;
+            display: none;
+            max-width: 90%;
+            width: 400px;
+        }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        .message-popup h3 {
+            color: #ff6b93;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .message-popup p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .close-popup {
+            padding: 10px 30px;
+            background: #ff6b93;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .close-popup:hover {
+            background: #ff4d7e;
+            transform: scale(1.05);
+        }
+
+        /* Games section */
+        .games-section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 30px;
+            margin: 40px 0;
+            width: 100%;
+            max-width: 800px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s ease-out 1s both;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: #ff6b93;
+            margin-bottom: 40px;
+        }
+
+        .game-container {
+            margin-bottom: 50px;
+        }
+
+        .game-title {
+            font-size: 1.8rem;
+            color: #5d3a3a;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .options-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .option-label {
+            background: rgba(255, 182, 193, 0.1);
+            padding: 15px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .option-label:hover {
+            background: rgba(255, 182, 193, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .option-label.selected {
+            border-color: #ff6b93;
+            background: rgba(255, 107, 147, 0.1);
+        }
+
+        .option-input {
+            display: none;
+        }
+
+        .feedback {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: 500;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .positive-feedback {
+            background: rgba(144, 238, 144, 0.2);
+            color: #2e8b57;
+        }
+
+        .negative-feedback {
+            background: rgba(255, 182, 193, 0.2);
+            color: #c71585;
+        }
+
+        /* Score section */
+        .score-container {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(255, 182, 193, 0.1), rgba(173, 216, 230, 0.1));
+            border-radius: 20px;
+            margin-top: 40px;
+        }
+
+        .score-title {
+            font-size: 2rem;
+            color: #ff6b93;
+            margin-bottom: 20px;
+        }
+
+        .score-value {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #ff6b93;
+            text-shadow: 0 0 20px rgba(255, 107, 147, 0.3);
+        }
+
+        /* Love message section */
+        .love-message {
+            margin: 60px 0;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 30px;
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-out 1.5s both;
+        }
+
+        .love-message h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #ff6b93;
+            margin-bottom: 30px;
+        }
+
+        .message-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #5d3a3a;
+            white-space: pre-line;
+            opacity: 0;
+            animation: typing 8s steps(200) 2s forwards;
+            overflow: hidden;
+            border-right: 2px solid #ff6b93;
+            width: 0;
+            margin: 0 auto;
+        }
+
+        @keyframes typing {
+            to {
+                width: 100%;
+                opacity: 1;
+                border-right-color: transparent;
+            }
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .buttons-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .romantic-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .games-section {
+                padding: 20px;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .love-message {
+                padding: 20px;
+                margin: 30px 0;
+            }
+
+            .message-text {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-heading {
+                font-size: 2.5rem;
+                margin: 20px 0 40px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .game-title {
+                font-size: 1.5rem;
+            }
+
+            .options-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating hearts -->
+    <div id="hearts-container"></div>
+
+    <!-- Main container -->
+    <div class="container">
+        <!-- Main heading -->
+        <h1 class="main-heading">Good Morning Mera Baccha 💖</h1>
+
+        <!-- Interactive buttons -->
+        <div class="buttons-section">
+            <button class="romantic-btn coffee-btn" id="coffeeBtn">
+                <span>☕</span>
+                <span>Morning Coffee</span>
+            </button>
+            <button class="romantic-btn juice-btn" id="juiceBtn">
+                <span>🥒</span>
+                <span>Karela Ka Juice</span>
+            </button>
+        </div>
+
+        <!-- Popup message -->
+        <div class="message-popup" id="messagePopup">
+            <h3 id="popupTitle">Message 💖</h3>
+            <p id="popupMessage"></p>
+            <button class="close-popup" id="closePopup">Close</button>
+        </div>
+
+        <!-- Games section -->
+        <div class="games-section">
+            <h2 class="section-title">Let's Play a Love Game 💕</h2>
+
+            <!-- Game 1: Quiz -->
+            <div class="game-container">
+                <h3 class="game-title">1. How much do you love me? 💝</h3>
+                <div class="options-container" id="quiz1">
+                    <label class="option-label">
+                        <input type="radio" name="love" value="5" class="option-input">
+                        5% - Just a little 😊
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="love" value="10" class="option-input">
+                        10% - Somewhat 💕
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="love" value="50" class="option-input">
+                        50% - Halfway there! ❤️
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="love" value="100" class="option-input">
+                        100% - Completely! 💖💖💖
+                    </label>
+                </div>
+                <div class="feedback" id="feedback1"></div>
+            </div>
+
+            <!-- Game 2: Loving level -->
+            <div class="game-container">
+                <h3 class="game-title">2. How loving am I? 🌟</h3>
+                <div class="options-container" id="quiz2">
+                    <label class="option-label">
+                        <input type="radio" name="loving" value="cute" class="option-input">
+                        Cute 🧸
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="loving" value="sweet" class="option-input">
+                        Very Sweet 🍭
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="loving" value="loving" class="option-input">
+                        Super Loving 💖
+                    </label>
+                    <label class="option-label">
+                        <input type="radio" name="loving" value="world" class="option-input">
+                        My Whole World 👑
+                    </label>
+                </div>
+                <div class="feedback" id="feedback2"></div>
+            </div>
+
+            <!-- Score display -->
+            <div class="score-container">
+                <h3 class="score-title">Your Love Score</h3>
+                <div class="score-value" id="scoreValue">0 / 2 💯</div>
+            </div>
+        </div>
+
+        <!-- Final love message -->
+        <div class="love-message">
+            <h2>A Message For My Princess 👑</h2>
+            <div class="message-text" id="loveMessage">
+Love you my little princess 💕
+You are my sunshine, my peace, my madness, my forever.
+Every morning starts better knowing you exist.
+Stay smiling, stay mine, stay magical.
+Good morning, my world 👑💖</div>
+        </div>
+    </div>
+
+    <script>
+        // Create floating hearts
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts-container');
+            const heartCount = 20;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '💖';
+                heart.style.left = `${Math.random() * 100}vw`;
+                heart.style.animationDelay = `${Math.random() * 6}s`;
+                heart.style.fontSize = `${Math.random() * 20 + 15}px`;
+                heartsContainer.appendChild(heart);
+            }
+        }
+
+        // Interactive buttons behavior
+        let coffeeAttempts = 0;
+        let juiceAttempts = 0;
+        const maxAttempts = 3;
+
+        const coffeeBtn = document.getElementById('coffeeBtn');
+        const juiceBtn = document.getElementById('juiceBtn');
+        const messagePopup = document.getElementById('messagePopup');
+        const popupMessage = document.getElementById('popupMessage');
+        const popupTitle = document.getElementById('popupTitle');
+        const closePopup = document.getElementById('closePopup');
+
+        // Button move away function
+        function makeButtonMove(button, attempts) {
+            const moveDistance = 100;
+            const currentX = parseFloat(button.style.left || 0);
+            const currentY = parseFloat(button.style.top || 0);
+            
+            // Calculate random direction
+            const angle = Math.random() * Math.PI * 2;
+            const newX = currentX + Math.cos(angle) * moveDistance;
+            const newY = currentY + Math.sin(angle) * moveDistance;
+            
+            // Apply movement
+            button.style.transform = `translate(${newX}px, ${newY}px) scale(1.05)`;
+            
+            // Return to position after animation
+            setTimeout(() => {
+                button.style.transform = `translate(${currentX}px, ${currentY}px) scale(1)`;
+            }, 300);
+        }
+
+        // Button click handlers
+        coffeeBtn.addEventListener('click', function(e) {
+            coffeeAttempts++;
+            
+            if (coffeeAttempts < maxAttempts) {
+                makeButtonMove(this, coffeeAttempts);
+                e.preventDefault();
+                
+                // Show attempt message
+                const messages = [
+                    "Trying to catch me? 😊",
+                    "Almost there! One more try 💕",
+                    "Just one more attempt, I promise! 🌟"
+                ];
+                popupTitle.textContent = "Not so fast!";
+                popupMessage.textContent = messages[coffeeAttempts - 1] || "Try again!";
+                messagePopup.style.display = 'block';
+            } else {
+                // Show success message
+                popupTitle.textContent = "Perfect Choice! 👑";
+                popupMessage.textContent = "Good choice! Princess deserves coffee ☕👑";
+                messagePopup.style.display = 'block';
+                this.style.transform = 'scale(1)';
+                this.style.left = '0';
+                this.style.top = '0';
+            }
+        });
+
+        juiceBtn.addEventListener('click', function(e) {
+            juiceAttempts++;
+            
+            if (juiceAttempts < maxAttempts) {
+                makeButtonMove(this, juiceAttempts);
+                e.preventDefault();
+                
+                // Show attempt message
+                const messages = [
+                    "Really? Karela juice? 😅",
+                    "You're kidding, right? 😆",
+                    "Last chance to pick coffee instead! 💖"
+                ];
+                popupTitle.textContent = "Wait! Think again!";
+                popupMessage.textContent = messages[juiceAttempts - 1] || "Try again!";
+                messagePopup.style.display = 'block';
+            } else {
+                // Show funny message
+                popupTitle.textContent = "Are you serious?? 😆";
+                popupMessage.textContent = "Princess can't drink this! Let's get coffee instead! ☕";
+                messagePopup.style.display = 'block';
+                this.style.transform = 'scale(1)';
+                this.style.left = '0';
+                this.style.top = '0';
+            }
+        });
+
+        // Close popup
+        closePopup.addEventListener('click', function() {
+            messagePopup.style.display = 'none';
+        });
+
+        // Close popup when clicking outside
+        window.addEventListener('click', function(e) {
+            if (e.target === messagePopup) {
+                messagePopup.style.display = 'none';
+            }
+        });
+
+        // Quiz functionality
+        let score = 0;
+        let quiz1Answered = false;
+        let quiz2Answered = false;
+
+        // Quiz 1: Love percentage
+        const quiz1Options = document.querySelectorAll('#quiz1 .option-input');
+        const feedback1 = document.getElementById('feedback1');
+
+        quiz1Options.forEach(option => {
+            option.addEventListener('change', function() {
+                const value = this.value;
+                const label = this.closest('.option-label');
+                
+                // Remove selected class from all labels
+                quiz1Options.forEach(opt => {
+                    opt.closest('.option-label').classList.remove('selected');
+                });
+                
+                // Add selected class to current label
+                label.classList.add('selected');
+                
+                // Show feedback
+                feedback1.style.display = 'block';
+                
+                if (value === '100') {
+                    feedback1.textContent = '💖 Correct! That\'s the only acceptable answer! My princess deserves 100% love! 💖';
+                    feedback1.className = 'feedback positive-feedback';
+                    if (!quiz1Answered) {
+                        score++;
+                        quiz1Answered = true;
+                        updateScore();
+                    }
+                } else {
+                    feedback1.textContent = `Only ${value}%? 😢 Let me convince you to choose 100%! 💕`;
+                    feedback1.className = 'feedback negative-feedback';
+                    if (quiz1Answered) {
+                        score--;
+                        quiz1Answered = false;
+                        updateScore();
+                    }
+                }
+            });
+        });
+
+        // Quiz 2: Loving level
+        const quiz2Options = document.querySelectorAll('#quiz2 .option-input');
+        const feedback2 = document.getElementById('feedback2');
+
+        const responses = {
+            'cute': '🧸 Cute? That\'s sweet, but I\'m much more than just cute! Try again! 💕',
+            'sweet': '🍭 Very sweet? Getting closer, but I\'m even more loving! 🌟',
+            'loving': '💖 Super Loving? Almost perfect! But I\'m your everything! 👑',
+            'world': '👑 Perfect! I am indeed your whole world! Just like you\'re mine! 💖💖💖'
+        };
+
+        quiz2Options.forEach(option => {
+            option.addEventListener('change', function() {
+                const value = this.value;
+                const label = this.closest('.option-label');
+                
+                // Remove selected class from all labels
+                quiz2Options.forEach(opt => {
+                    opt.closest('.option-label').classList.remove('selected');
+                });
+                
+                // Add selected class to current label
+                label.classList.add('selected');
+                
+                // Show feedback
+                feedback2.style.display = 'block';
+                feedback2.textContent = responses[value];
+                
+                if (value === 'world') {
+                    feedback2.className = 'feedback positive-feedback';
+                    if (!quiz2Answered) {
+                        score++;
+                        quiz2Answered = true;
+                        updateScore();
+                    }
+                } else {
+                    feedback2.className = 'feedback negative-feedback';
+                    if (quiz2Answered) {
+                        score--;
+                        quiz2Answered = false;
+                        updateScore();
+                    }
+                }
+            });
+        });
+
+        // Update score display
+        function updateScore() {
+            const scoreValue = document.getElementById('scoreValue');
+            scoreValue.textContent = `${score} / 2 💯`;
+            
+            // Add animation to score
+            scoreValue.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+                scoreValue.style.transform = 'scale(1)';
+            }, 300);
+        }
+
+        // Initialize love message animation
+        function initLoveMessage() {
+            const messageElement = document.getElementById('loveMessage');
+            const text = messageElement.textContent;
+            messageElement.textContent = '';
+            
+            // Start typing animation after delay
+            setTimeout(() => {
+                messageElement.style.animation = 'typing 8s steps(200) forwards';
+                setTimeout(() => {
+                    messageElement.textContent = text;
+                }, 100);
+            }, 2000);
+        }
+
+        // Initialize everything when page loads
+        window.addEventListener('DOMContentLoaded', function() {
+            createHearts();
+            initLoveMessage();
+            
+            // Add smooth entrance animations
+            const elements = document.querySelectorAll('.romantic-btn, .games-section, .love-message');
+            elements.forEach((el, index) => {
+                el.style.animationDelay = `${0.5 + index * 0.2}s`;
+            });
+        });
+
+        // Add responsive adjustments on window resize
+        window.addEventListener('resize', function() {
+            // Reset button positions on resize
+            coffeeBtn.style.left = '0';
+            coffeeBtn.style.top = '0';
+            juiceBtn.style.left = '0';
+            juiceBtn.style.top = '0';
+        });
+    </script>
+</body>
+</html>
