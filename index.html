@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ultra Pro Sorry Website 💖</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif;}
+body{
+height:100vh;
+overflow:hidden;
+color:white;
+background:
+linear-gradient(135deg,rgba(255,100,150,.6),rgba(120,180,255,.6)),
+url("https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=2000&auto=format&fit=crop") center/cover no-repeat;
+}
+
+/* screens */
+.screen{
+position:absolute;
+top:0;left:0;
+width:100%;height:100%;
+display:none;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+backdrop-filter:blur(3px);
+}
+.active{display:flex;animation:fade .8s;}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+
+h1{font-size:42px;margin:15px;text-shadow:0 0 15px pink;}
+p{max-width:600px;margin:10px;font-size:20px;}
+
+button{
+padding:14px 28px;
+font-size:18px;
+border:none;
+border-radius:30px;
+margin:10px;
+cursor:pointer;
+background:#ff2e63;
+color:white;
+box-shadow:0 0 15px rgba(255,0,100,.6);
+transition:.2s;
+}
+button:hover{transform:scale(1.1)}
+
+#noBtn{position:absolute}
+
+/* hearts rain */
+.heart{
+position:absolute;
+color:pink;
+animation:fall linear infinite;
+}
+@keyframes fall{
+0%{transform:translateY(-10vh);opacity:1}
+100%{transform:translateY(110vh);opacity:0}
+}
+
+/* gifs */
+.gif{
+width:140px;
+position:absolute;
+animation:jump 1.5s infinite alternate;
+}
+@keyframes jump{from{transform:translateY(0)}to{transform:translateY(-25px)}}
+
+/* confetti */
+.confetti{
+position:absolute;
+width:10px;height:10px;
+background:gold;
+animation:confetti 2s linear infinite;
+}
+@keyframes confetti{
+0%{transform:translateY(-10vh) rotate(0)}
+100%{transform:translateY(110vh) rotate(360deg)}
+}
+
+/* love meter */
+#meter{
+width:220px;height:22px;
+background:#333;border-radius:20px;
+overflow:hidden;margin-top:15px;
+}
+#fill{
+height:100%;width:0%;
+background:linear-gradient(90deg,pink,red);
+}
+</style>
+</head>
+
+<body>
+
+<audio autoplay loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_4e6e0c2d1e.mp3?filename=romantic-love-ambient-110858.mp3" type="audio/mp3">
+</audio>
+
+<!-- floating hearts -->
+<div id="hearts"></div>
+
+<!-- SCREEN 1 -->
+<div class="screen active" id="s1">
+<h1>Please Sorry… Man Jao Na 🥺💔</h1>
+<p>Mujhse galti ho gayi… please maaf kar do 😭</p>
+<div>
+<button onclick="goYes()">YES</button>
+<button id="noBtn">NO</button>
+</div>
+</div>
+
+<!-- SCREEN 2 -->
+<div class="screen" id="s2">
+<h1>Pakaa Maaf Kiya Na? 😭❤️</h1>
+<p>Sirf YES hi allowed hai 😈</p>
+<input id="yesInput" placeholder="Type YES">
+<button onclick="checkYes()">Submit</button>
+
+<div id="meter"><div id="fill"></div></div>
+</div>
+
+<!-- SCREEN 3 FINAL -->
+<div class="screen" id="s3">
+<h1>I Love You Forever 💖</h1>
+
+<img class="gif" src="https://media.tenor.com/14190082913243615731/tenor.gif" style="top:20%;left:15%;">
+<img class="gif" src="https://media.tenor.com/27417084/tenor.gif" style="top:50%;left:60%;">
+<img class="gif" src="https://media.tenor.com/6470473791690227657/tenor.gif" style="top:70%;left:30%;">
+
+</div>
+
+<script>
+
+/* hearts rain */
+for(let i=0;i<25;i++){
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="💖";
+h.style.left=Math.random()*100+"%";
+h.style.animationDuration=3+Math.random()*4+"s";
+document.body.appendChild(h);
+}
+
+/* runaway NO button */
+const noBtn=document.getElementById("noBtn");
+noBtn.onmouseover=()=>{
+noBtn.style.top=Math.random()*80+"%";
+noBtn.style.left=Math.random()*80+"%";
+}
+
+/* transitions */
+function goYes(){
+show("s2");
+}
+
+/* show screen */
+function show(id){
+document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+document.getElementById(id).classList.add("active");
+}
+
+/* yes typing */
+function checkYes(){
+let val=document.getElementById("yesInput").value.toLowerCase();
+if(val==="yes"){
+show("s3");
+confettiBlast();
+}else{
+alert("ONLY YES 😭");
+}
+}
+
+/* love meter animation */
+let fill=document.getElementById("fill");
+setInterval(()=>{
+let w=parseInt(fill.style.width)||0;
+if(w<100)fill.style.width=(w+1)+"%";
+},80);
+
+/* confetti */
+function confettiBlast(){
+for(let i=0;i<60;i++){
+let c=document.createElement("div");
+c.className="confetti";
+c.style.left=Math.random()*100+"%";
+c.style.background=["gold","pink","white"][Math.floor(Math.random()*3)];
+document.body.appendChild(c);
+}
+}
+
+</script>
+
+</body>
+</html>
